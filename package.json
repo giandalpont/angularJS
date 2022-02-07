@@ -4,7 +4,8 @@
   "description": "My First Angular Website with external API, Angular Routing and more.",
   "main": "index.js",
   "scripts": {
-    "start": "npx http-server"
+    "start": "npx http-server",
+    "build": ""
   },
   "repository": {
     "type": "git",
