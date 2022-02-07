@@ -1,17 +1,24 @@
 app.factory('marvel', ['$http', 'config', function($http, config) {
 
+  var timestamp = Date.now();
+  var hash = md5(timestamp + config.privateKey + config.publicKey);
+
+
   var _search = function (search = null) {
     var url = config.baseUrl + "characters";
+    
 
     if (!search) {
       return $http
-        .get(config.baseUrl + "characters?apikey=" + config.apikey, {
-          params: {
-            ts: new Date(),
-            apikey: config.apikey,
-            hash: config.hash,
-          },
-        })
+        .get(
+          config.baseUrl +
+            "characters?ts=" +
+            timestamp +
+            "&apikey=" +
+            config.publicKey +
+            "&hash=" +
+            hash,
+        )
         .success(function (data) {
           return data;
         })
@@ -25,9 +32,9 @@ app.factory('marvel', ['$http', 'config', function($http, config) {
         params: {
           nameStartsWith: search,
           limit: 24,
-          ts: new Date(),
-          apikey: config.apikey,
-          hash: config.hash,
+          ts: timestamp,
+          apikey: config.publicKey,
+          hash: hash,
         },
       })
       .success(function (data) {
@@ -39,7 +46,7 @@ app.factory('marvel', ['$http', 'config', function($http, config) {
   };
 
   var _getId = function (id) {
-    var url = config.baseUrl + "characters/"+id+"?apikey="+config.apikey;
+    var url = config.baseUrl + "characters/" + id + "?ts=" + timestamp + "&apikey=" + config.publicKey + "&hash=" + hash;
 
     return $http
       .get(url)
