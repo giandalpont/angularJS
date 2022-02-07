@@ -5,7 +5,13 @@ app.factory('marvel', ['$http', 'config', function($http, config) {
 
     if (!search) {
       return $http
-        .get(config.baseUrl + "characters?apikey=" + config.apikey)
+        .get(config.baseUrl + "characters?apikey=" + config.apikey, {
+          params: {
+            ts: new Date(),
+            apikey: config.apikey,
+            hash: config.hash,
+          },
+        })
         .success(function (data) {
           return data;
         })
@@ -19,7 +25,9 @@ app.factory('marvel', ['$http', 'config', function($http, config) {
         params: {
           nameStartsWith: search,
           limit: 24,
+          ts: new Date(),
           apikey: config.apikey,
+          hash: config.hash,
         },
       })
       .success(function (data) {
