@@ -1,0 +1,42 @@
+
+<div class="grid-container mrgt40">
+    <div class="breadcrumbs-comic">
+        <nav aria-label="You are here:" role="navigation">
+            <ul class="breadcrumbs">
+                <li><a href="#">Inicial</a></li>
+                <li class="disabled">{{detail.name}}</li>
+            </ul>
+        </nav>
+        <a href="/#/" class="back">Voltar</a>
+    </div>
+</div>
+
+<div class="grid-container mrgt40">
+    <div class="grid-x grid-margin-x">
+        <div class=" medium-6 cell small-12">
+            <div class="thumbnail">
+                <img class="" ng-src="{{detail.thumbnail.path}}.{{detail.thumbnail.extension}}" alt="{{detail.name}}" />
+            </div>
+        </div>
+        <div class="medium-6 large-5 cell">
+            <h2 class="work-feature-block-header"><strong>{{detail.name}}</strong></h2>
+            <p>{{detail.description}}</p>
+            <div>
+                <strong>Ultima atualização:</strong> {{detail.modified | date}}
+            </div>
+            <br>
+            <div class="button-group-option" data-grouptype="ou">
+                <a href="{{detail.urls[0].url}}" target="_blank" class="button success radius">Detalhes</a>
+                <a href="{{detail.urls[1].url}}" target="_blank" class="button primary radius">Wiki</a>
+            </div>
+
+            <br>
+            <h3>Quadrinhos disponíveis: <b>{{detail.comics.available}}</b></h3>
+            <div ng-repeat="comic in detail.comics.items">
+                <span>{{comic.name}}</span> <br />
+            </div>
+        </div>
+    </div>
+</div>
+<div class="mrgt40"></div>
+

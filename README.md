@@ -1,1 +1,2 @@
-# angularJS
+# AngularJS
+npx http-server

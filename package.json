@@ -1,0 +1,20 @@
+{
+  "name": "angularJS",
+  "version": "1.0.0",
+  "description": "My First Angular Website with external API, Angular Routing and more.",
+  "main": "index.js",
+  "scripts": {
+    "start": "npx http-server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/giandalpont/angularJS.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/giandalpont/angularJS/issues"
+  },
+  "homepage": "https://github.com/giandalpont/angularJS#readme"
+}

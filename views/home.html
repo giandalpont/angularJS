@@ -1,0 +1,39 @@
+<div class="grid-container">
+    <div class="grid-x grid-margin-x small-up-1 medium-up-2 large-up-3">
+        <form name="searchForm" class="input-group input-group-rounded search">
+            <input class="input-group-field" ng-model="search.value" ng-change="searchAPI(search.value)" name="search" placeholder="Pesquisa por um personagem" type="search">
+            <div class="input-group-button">
+                <input type="submit" ng-click="searchAPI(search.value)"  class="button secondary" value="Pesquisar">
+            </div>
+        </form>
+        <div ng-hide="!notFound" data-closable class="alert-box callout warning">
+            Seu super hero foi para a DC
+        </div>
+    </div>
+</div>
+
+<div ng-hide="!loader" class="grid-loader">
+    <div class="loader"></div>
+</div>
+
+<article ng-hide="loader" class="grid-container">
+    <div class="grid-x grid-margin-x small-up-1 medium-up-2 large-up-3">
+        <div class="cell" ng-repeat="comic in marvel.data.results">
+            <div class="card-article-hover card">
+                <div class="image" style="background-image: url('{{comic.thumbnail.path}}.{{comic.thumbnail.extension}}')"></div>
+                <div class="card-section">
+                    <p class="meta-data article-subtext">{{comic.modified | date: "dd/MM/yyyy 'às' h:mma" }}</p>
+                    <a href="#/comic/{{comic.id}}">
+                        <h3 class="article-title">{{comic.name}}</h3>
+                    </a>
+                </div>
+                <div class="card-divider flex-container align-middle">
+                    <a href="#/comic/{{comic.id}}" class="button">Ver mais</a>
+                </div>
+                <div class="hover-border">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="mrgt40"></div>
+</article>
