@@ -3,11 +3,9 @@ app.factory('marvel', ['$http', 'config', function($http, config) {
   var timestamp = Date.now();
   var hash = md5(timestamp + config.privateKey + config.publicKey);
 
-
   var _search = function (search = null) {
     var url = config.baseUrl + "characters";
     
-
     if (!search) {
       return $http
         .get(
